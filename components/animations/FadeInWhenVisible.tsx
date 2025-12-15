@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { fadeInUp } from "@/lib/animations";
 
 interface FadeInWhenVisibleProps {
   children: ReactNode;
@@ -21,10 +20,11 @@ export function FadeInWhenVisible({
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={{
-        ...fadeInUp,
+        hidden: { opacity: 0, y: 60 },
         visible: {
-          ...fadeInUp.visible,
-          transition: { ...fadeInUp.visible.transition, delay },
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut", delay },
         },
       }}
       className={className}
